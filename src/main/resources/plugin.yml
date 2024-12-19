@@ -11,3 +11,10 @@ commands:
       description: Teleport to your home location.
       usage: /home
       permission: bongothy.home
+permissions:
+  bongothy.sethome:
+    description: Allows the player to set their home location.
+    default: true
+  bongothy.home:
+    description: Allows the player to teleport to their home location.
+    default: true

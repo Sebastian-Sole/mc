@@ -14,11 +14,11 @@ public class BlockBreak implements Listener {
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
         var block = event.getBlock();
-        if (block.getType() == Material.DIAMOND_ORE) {
+        if (block.getType() == Material.DIAMOND_ORE || block.getType() == Material.DEEPSLATE_DIAMOND_ORE) {
             block.setType(Material.AIR);
             block.getDrops().clear();
+            event.getPlayer().sendMessage("nonono, no diamonds for you");
         }
-        event.getPlayer().sendMessage("nonono, no diamonds for you");
     }
 
 }
