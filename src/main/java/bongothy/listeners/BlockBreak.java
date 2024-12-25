@@ -15,9 +15,12 @@ public class BlockBreak implements Listener {
     public void onBlockBreak(BlockBreakEvent event) {
         var block = event.getBlock();
         if (block.getType() == Material.DIAMOND_ORE || block.getType() == Material.DEEPSLATE_DIAMOND_ORE) {
-            block.setType(Material.AIR);
-            block.getDrops().clear();
-            event.getPlayer().sendMessage("nonono, no diamonds for you");
+            int number = (int) (Math.random() * 100);
+            if (number == 69) {
+                block.setType(Material.AIR);
+                block.getDrops().clear();
+                event.getPlayer().sendMessage("the boogeyman stole your diamond, watch your back");
+            }
         }
     }
 
