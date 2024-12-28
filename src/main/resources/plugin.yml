@@ -11,10 +11,21 @@ commands:
       description: Teleport to your home location.
       usage: /home
       permission: bongothy.home
+  Home:
+      description: Teleport to your home location.
+      usage: /Home
+      permission: bongothy.home
+  coords:
+      description: Get your current coordinates.
+      usage: /coords
+      permission: bongothy.coords
 permissions:
   bongothy.sethome:
     description: Allows the player to set their home location.
     default: true
   bongothy.home:
     description: Allows the player to teleport to their home location.
+    default: true
+  bongothy.coords:
+    description: Allows the player to get their current coordinates.
     default: true

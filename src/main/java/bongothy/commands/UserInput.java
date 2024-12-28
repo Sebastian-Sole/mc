@@ -13,7 +13,9 @@ public class UserInput implements CommandExecutor {
 
     private final String[] registeredCommands = {
             "sethome",
-            "home"
+            "home",
+            "Home",
+            "coords"
     };
 
     private final GameEngine gameEngine;
@@ -29,8 +31,11 @@ public class UserInput implements CommandExecutor {
             case "sethome" -> {
                 return new SetHome(senderPlayer, gameEngine, args).execute();
             }
-            case "home" -> {
+            case "home", "Home" -> {
                 return new Home(senderPlayer, gameEngine, args).execute();
+            }
+            case "coords" -> {
+                return new Coords(senderPlayer, args).execute();
             }
         }
 
@@ -41,6 +46,8 @@ public class UserInput implements CommandExecutor {
         switch (args[0]) {
             case "sethome":
             case "home":
+            case "Home":
+            case "coords":
                 return new ArrayList<>();
             default:
                 return existingCompletions;
