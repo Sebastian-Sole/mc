@@ -19,6 +19,8 @@ repositories {
 
 dependencies {
     compileOnly 'org.spigotmc:spigot-api:1.21-R0.1-SNAPSHOT'
+    implementation group: 'com.mysql', name: 'mysql-connector-j', version: '8.2.0'
+
 }
 
 def targetJavaVersion = 17

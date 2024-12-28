@@ -3,6 +3,8 @@ package bongothy.commands;
 import bongothy.GameEngine;
 import org.bukkit.entity.Player;
 
+import java.sql.SQLException;
+
 public class SetHome {
 
     private final Player player;
@@ -20,8 +22,12 @@ public class SetHome {
             player.sendMessage("Dawg you fucked up wit yo spellin. Use /sethome bruh bruh");
             return true;
         }
-        gameEngine.updatePlayerHome(player, player.getLocation());
-        player.sendMessage("Crib set at " + player.getLocation().getBlockX() + ", " + player.getLocation().getBlockY() + ", " + player.getLocation().getBlockZ());
-        return true;
+        try {
+            gameEngine.getHomeStorage().saveHome(player.getUniqueId(), player.getLocation());
+            player.sendMessage("Crib set at " + player.getLocation().getBlockX() + ", " + player.getLocation().getBlockY() + ", " + player.getLocation().getBlockZ());
+            return true;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

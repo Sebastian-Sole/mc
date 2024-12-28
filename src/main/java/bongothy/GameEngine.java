@@ -1,11 +1,11 @@
 package bongothy;
 
 import bongothy.commands.UserInput;
+import bongothy.database.HomeStorage;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.logging.Logger;
 
 
@@ -16,9 +16,11 @@ public class GameEngine {
     private Map<Player, Location> playerHomes = new HashMap<>();
     private Logger logger;
 
+    private final HomeStorage homeStorage;
 
     public GameEngine(PluginMain pluginMain) {
         this.pluginMain = pluginMain;
+        this.homeStorage = new HomeStorage(pluginMain.getDatabaseManager());
     }
 
     public void updatePlayerHome(Player player, Location location) {
