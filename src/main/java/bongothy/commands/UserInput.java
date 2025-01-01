@@ -15,7 +15,8 @@ public class UserInput implements CommandExecutor {
             "sethome",
             "home",
             "Home",
-            "coords"
+            "coords",
+            "diamonds"
     };
 
     private final GameEngine gameEngine;
@@ -37,22 +38,19 @@ public class UserInput implements CommandExecutor {
             case "coords" -> {
                 return new Coords(senderPlayer, args).execute();
             }
+            case "diamonds" -> {
+                return new Diamonds(senderPlayer, gameEngine, args).execute();
+            }
         }
 
         return false;
     }
 
     public List<String> getCompletions(String[] args, List<String> existingCompletions) {
-        switch (args[0]) {
-            case "sethome":
-            case "home":
-            case "Home":
-            case "coords":
-                return new ArrayList<>();
-            default:
-                return existingCompletions;
-
-        }
+        return switch (args[0]) {
+            case "sethome", "home", "Home", "coords" -> new ArrayList<>();
+            default -> existingCompletions;
+        };
     }
 
     public String[] getRegisteredCommands() {

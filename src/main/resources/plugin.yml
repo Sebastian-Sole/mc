@@ -19,6 +19,10 @@ commands:
       description: Get your current coordinates.
       usage: /coords
       permission: bongothy.coords
+  diamonds:
+      description: Get a diamond.
+      usage: /diamonds
+      permission: bongothy.diamonds
 permissions:
   bongothy.sethome:
     description: Allows the player to set their home location.
@@ -29,3 +33,6 @@ permissions:
   bongothy.coords:
     description: Allows the player to get their current coordinates.
     default: true
+  bongothy.diamonds:
+    description: Allows the player to get a diamond.
+    default: op

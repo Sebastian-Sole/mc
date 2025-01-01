@@ -2,6 +2,8 @@ package bongothy;
 
 import bongothy.commands.UserInput;
 import bongothy.database.HomeStorage;
+import bongothy.database.PlayerConfigData;
+import bongothy.database.PlayerConfigManager;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
@@ -17,10 +19,13 @@ public class GameEngine {
     private Logger logger;
 
     private final HomeStorage homeStorage;
+    private final PlayerConfigManager playerConfigManager;
+
 
     public GameEngine(PluginMain pluginMain) {
         this.pluginMain = pluginMain;
         this.homeStorage = new HomeStorage(pluginMain.getDatabaseManager());
+        this.playerConfigManager = new PlayerConfigManager(pluginMain.getDatabaseManager());
     }
 
     public void updatePlayerHome(Player player, Location location) {
@@ -54,4 +59,12 @@ public class GameEngine {
     public Logger getLogger() {
         return logger;
     }
+    public HomeStorage getHomeStorage() {
+        return homeStorage;
+    }
+
+    public PlayerConfigManager getPlayerConfigManager() {
+        return playerConfigManager;
+    }
+
 }

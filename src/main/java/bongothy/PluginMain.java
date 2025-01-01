@@ -2,6 +2,7 @@ package bongothy;
 
 import bongothy.commands.UserInput;
 import bongothy.listeners.BlockBreak;
+import bongothy.listeners.PlayerJoin;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -59,7 +60,8 @@ public final class PluginMain extends JavaPlugin {
     }
 
     private void registerEvents() {
-        getServer().getPluginManager().registerEvents(new BlockBreak(), this);
+        getServer().getPluginManager().registerEvents(new BlockBreak(gameEngine), this);
+        getServer().getPluginManager().registerEvents(new PlayerJoin(gameEngine), this);
     }
 
     private void setCommandExecutor() {
